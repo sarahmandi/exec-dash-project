@@ -1,23 +1,24 @@
 # monthly_sales.py
 
 # TODO: import some modules and/or packages here
+import csv
+import os
+import itertools
+from operator import itemgetter
 
-# TODO: write some Python code here to produce the desired functionality...
 
-print("-----------------------")
-print("MONTH: March 2018")
+##Option C: display list of files to user
+path = "/Users/sarahmandi1/Desktop/exec-dash-project/data"
+dirs = os.listdir(path)
+for file in dirs:
+    if file == ".DS_Store":
+        pass
+    else:
+        print(file)
+    
+#Prompt user to input their selection
+while True:
+   user_input = input("Please select a file: ")
+   break
 
-print("-----------------------")
-print("CRUNCHING THE DATA...")
 
-print("-----------------------")
-print("TOTAL MONTHLY SALES: $12,000.71")
-
-print("-----------------------")
-print("TOP SELLING PRODUCTS:")
-print("  1) Button-Down Shirt: $6,960.35")
-print("  2) Super Soft Hoodie: $1,875.00")
-print("  3) etc.")
-
-print("-----------------------")
-print("VISUALIZING THE DATA...")
