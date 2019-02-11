@@ -12,16 +12,33 @@ import matplotlib.pyplot as plt
 ##Option C: display list of files to user
 path = "/Users/sarahmandi1/Desktop/exec-dash-project/data"
 dirs = os.listdir(path)
+
+files = []
+
 for file in dirs:
     if file == ".DS_Store":
         pass
     else:
         print(file)
+        files.append(file)
+
+#print(files)
     
 #Prompt user to input their selection
+
+#user_input = input("Please select a file: ")
+
+#print(files)
 while True:
-   user_input = input("Please select a file: ")
-   break
+    
+    user_input = input("Please select a file: ")
+    if user_input in files:
+        break 
+    else:
+        print("Sorry, that didn't work. Double check the file name!")
+        continue
+
+
 
 ##following is from https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/exercises/sales-reporting/csv_solution_further.py
 CSV_FILENAME = user_input
@@ -97,7 +114,7 @@ performance = top_seller_sales
  
 plt.barh(y_pos, performance, align='center', alpha=0.5)
 plt.yticks(y_pos, objects)
-plt.xlabel('Sales')
+plt.xlabel('Sales (USD)')
 plt.title('Top-Selling Products (' + month + " " + str(year) +")")
  
 plt.show()
