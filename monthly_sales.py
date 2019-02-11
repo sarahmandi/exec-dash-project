@@ -10,6 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import re
 import calendar
+from matplotlib.ticker import StrMethodFormatter
 
 
 ##Option C: display list of files to user
@@ -49,8 +50,7 @@ for f in user_input_file:
     year_name.append(int(f[6:-6]))
     month_name.append(int(f[10:-4]))
 
-    
-##following is from https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/exercises/sales-reporting/csv_solution_further.py
+##following is adapted from https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/exercises/sales-reporting/csv_solution_further.py
 CSV_FILENAME = user_input
 csv_filepath = os.path.join("data", CSV_FILENAME)
 rows = []
@@ -78,8 +78,8 @@ sorted_product_sales = sorted(product_sales, key=itemgetter("monthly_sales"), re
 top_sellers = sorted_product_sales[0:7] 
 #print(top_sellers)
 
-month = calendar.month_name[month_name[0]] # TODO: get from file name or date values
-year = year_name[0] # TODO: get from file name or date values
+month = calendar.month_name[month_name[0]] 
+year = year_name[0] 
 
 #
 # INFO OUTPUTS
@@ -117,14 +117,18 @@ for top_seller in top_sellers:
 print("-----------------------")
 print("VISUALIZING THE DATA...")
 
+[float(i) for i in top_seller_sales]
+#print(top_seller_sales)
 
 objects = top_seller_names
 y_pos = np.arange(len(objects))
-performance = top_seller_sales #TODO: get this to print in USD format
+performance = top_seller_sales 
  
+
+plt.gca().xaxis.set_major_formatter(StrMethodFormatter('${x:,.0f}'))
+
 plt.barh(y_pos, performance, align='center', alpha=0.5)
 plt.yticks(y_pos, objects)
 plt.xlabel('Sales (USD)') 
 plt.title('Top-Selling Products (' + month + " " + str(year) +")")
- 
 plt.show()
