@@ -8,6 +8,9 @@ from operator import itemgetter
 import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
+import re
+import calendar
+
 
 ##Option C: display list of files to user
 path = "/Users/sarahmandi1/Desktop/exec-dash-project/data"
@@ -21,25 +24,32 @@ for file in dirs:
     else:
         print(file)
         files.append(file)
-
-#print(files)
     
 #Prompt user to input their selection
 
 #user_input = input("Please select a file: ")
+
+user_input_file =[]
 
 #print(files)
 while True:
     
     user_input = input("Please input a file name: ")
     if user_input in files:
+        user_input_file.append(user_input)
         break 
     else:
         print("Sorry, that didn't work. Double check the file name!")
         continue
 
+year_name =[]
+month_name =[]
 
+for f in user_input_file:
+    year_name.append(int(f[6:-6]))
+    month_name.append(int(f[10:-4]))
 
+    
 ##following is from https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/exercises/sales-reporting/csv_solution_further.py
 CSV_FILENAME = user_input
 csv_filepath = os.path.join("data", CSV_FILENAME)
@@ -68,8 +78,8 @@ sorted_product_sales = sorted(product_sales, key=itemgetter("monthly_sales"), re
 top_sellers = sorted_product_sales[0:7] 
 #print(top_sellers)
 
-month = "MARCH" # TODO: get from file name or date values
-year = 2018 # TODO: get from file name or date values
+month = calendar.month_name[month_name[0]] # TODO: get from file name or date values
+year = year_name[0] # TODO: get from file name or date values
 
 #
 # INFO OUTPUTS
