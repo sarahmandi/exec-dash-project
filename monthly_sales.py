@@ -31,7 +31,7 @@ for file in dirs:
 #print(files)
 while True:
     
-    user_input = input("Please select a file: ")
+    user_input = input("Please input a file name: ")
     if user_input in files:
         break 
     else:
@@ -110,11 +110,11 @@ print("VISUALIZING THE DATA...")
 
 objects = top_seller_names
 y_pos = np.arange(len(objects))
-performance = top_seller_sales
+performance = top_seller_sales #TODO: get this to print in USD format
  
 plt.barh(y_pos, performance, align='center', alpha=0.5)
 plt.yticks(y_pos, objects)
-plt.xlabel('Sales (USD)')
+plt.xlabel('Sales (USD)') 
 plt.title('Top-Selling Products (' + month + " " + str(year) +")")
  
 plt.show()
