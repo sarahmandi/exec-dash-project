@@ -14,7 +14,8 @@ from matplotlib.ticker import StrMethodFormatter
 
 
 ##Option C: display list of files to user
-path = "/Users/sarahmandi1/Desktop/exec-dash-project/data"
+#path = "/Users/sarahmandi1/Desktop/exec-dash-project/data"
+path = os.path.join("data")
 dirs = os.listdir(path)
 
 files = []
