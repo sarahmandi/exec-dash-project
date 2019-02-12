@@ -53,7 +53,7 @@ for f in user_input_file:
 month = calendar.month_name[month_name[0]] 
 year = year_name[0] 
 
-##following is adapted from https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/exercises/sales-reporting/csv_solution_further.py
+#with help from: https://github.com/prof-rossetti/georgetown-opim-243-201901/blob/master/exercises/sales-reporting/pandas_explore.py
 CSV_FILENAME = user_input
 csv_filepath = os.path.join("data", CSV_FILENAME)
 sales = pd.read_csv(csv_filepath)
@@ -76,6 +76,7 @@ print(f"TOTAL SALES: {to_usd(total_sales)}")
 print("-------------------------")
 print("TOP SELLING PRODUCTS:")
 print("-----------------------")
+
 for i in range(7):
 	print(str(i+1)+') '+str(total_price_by_prod.iloc[i][0])+' ' "${0:,.2f}".format(total_price_by_prod.iloc[i][1])
     )
