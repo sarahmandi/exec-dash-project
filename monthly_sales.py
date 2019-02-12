@@ -68,10 +68,6 @@ total_price_by_prod=pd.DataFrame({'products':products,'sales_price':sales_price_
 total_price_by_prod=total_price_by_prod.sort_values(by=['sales_price'],ascending=False)
 #print(products)
 
-for i in range(7):
-	print(str(i+1)+') '+str(total_price_by_prod.iloc[i][0])+' ' "${0:,.2f}".format(total_price_by_prod.iloc[i][1])
-    )
-
 print("-------------------------")
 print(f"SALES REPORT!")
 print("-------------------------")
@@ -79,6 +75,10 @@ print(f"MONTH: {month} {year}")
 print(f"TOTAL SALES: {to_usd(total_sales)}")
 print("-------------------------")
 print("TOP SELLING PRODUCTS:")
+print("-----------------------")
+for i in range(7):
+	print(str(i+1)+') '+str(total_price_by_prod.iloc[i][0])+' ' "${0:,.2f}".format(total_price_by_prod.iloc[i][1])
+    )
 print("-----------------------")
 print("VISUALIZING THE DATA...")
 
