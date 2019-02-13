@@ -81,7 +81,7 @@ print("TOP SELLING PRODUCTS:")
 print("-----------------------")
 
 for i in range(7):
-	print(str(i+1)+') '+str(total_price_by_prod.iloc[i][0])+' ' "${0:,.2f}".format(total_price_by_prod.iloc[i][1])
+	print(str(i+1)+') '+str(total_price_by_prod.iloc[i][0])+' ' "(${0:,.2f})".format(total_price_by_prod.iloc[i][1])
     )
 print("-----------------------")
 print("VISUALIZING THE DATA...")
