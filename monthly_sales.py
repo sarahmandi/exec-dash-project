@@ -2,7 +2,7 @@
 
 # TODO: import some modules and/or packages here
 import csv
-import os
+import os #needed for using directory paths and manipulating them
 import itertools
 from operator import itemgetter
 import matplotlib.pyplot as plt; plt.rcdefaults()
@@ -17,9 +17,11 @@ def to_usd(my_price):
   return f"${my_price:,.2f}"
 
 ##Option C: display list of files to user
+#https://docs.python.org/2/library/os.path.html
 path = os.path.join("data")
 dirs = os.listdir(path)
 
+#https://www.tutorialspoint.com/python/os_listdir.htm
 files = []
 
 for file in dirs:
@@ -43,11 +45,12 @@ while True:
         print("Sorry, that didn't work. Double check the file name!")
         continue
 
-year_name =[]
+#storing the year and month from by extracting integers from the user input
+year_name =[] 
 month_name =[]
 
 for f in user_input_file:
-    year_name.append(int(f[6:-6]))
+    year_name.append(int(f[6:-6])) #https://stackoverflow.com/questions/15417893/extract-number-from-file-name-in-python
     month_name.append(int(f[10:-4]))
 
 month = calendar.month_name[month_name[0]] 
@@ -83,11 +86,14 @@ for i in range(7):
 print("-----------------------")
 print("VISUALIZING THE DATA...")
 
+#https://python-graph-gallery.com/2-horizontal-barplot/
+
+
 objects = products
 y_pos = np.arange(len(objects))
 performance = sales_price_col
  
-
+#to get $ in the labels: https://stackoverflow.com/questions/38152356/matplotlib-dollar-sign-with-thousands-comma-tick-labels
 plt.gca().xaxis.set_major_formatter(StrMethodFormatter('${x:,.0f}'))
 
 plt.barh(y_pos, performance, align='center', alpha=0.5)
