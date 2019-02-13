@@ -1,6 +1,4 @@
 # monthly_sales.py
-
-# TODO: import some modules and/or packages here
 import csv
 import os #needed for using directory paths and manipulating them
 import itertools
@@ -8,9 +6,8 @@ from operator import itemgetter
 import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
 import matplotlib.pyplot as plt
-import re
-import calendar
-from matplotlib.ticker import StrMethodFormatter
+import calendar #needed to convert integer to month
+from matplotlib.ticker import StrMethodFormatter #for formatting data labels
 import pandas as pd
 
 def to_usd(my_price):
