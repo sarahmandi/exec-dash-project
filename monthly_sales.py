@@ -12,6 +12,8 @@ import pandas as pd
 
 def to_usd(my_price):
   return f"${my_price:,.2f}"
+print("THE FOLLOWING SALES DATA IS AVAILABLE:")
+print("--------------------------------------")
 
 ##Option C: display list of files to user
 #https://docs.python.org/2/library/os.path.html
@@ -20,21 +22,21 @@ dirs = os.listdir(path)
 
 #https://www.tutorialspoint.com/python/os_listdir.htm
 files = []
-
+f = 1
 for file in dirs:
     if file == ".DS_Store":
         pass
     else:
-        print(file)
+        print(" " + str(f) + ") " + file)
         files.append(file)
-    
+        f = f + 1
+print("--------------------------------------")
+
 #Prompt user to input their selection
 user_input_file =[]
-
 #print(files)
 while True:
-    
-    user_input = input("Please input a file name: ")
+    user_input = input("Please input a file name in sales-YYYYMM.csv format: ")
     if user_input in files:
         user_input_file.append(user_input)
         break 
@@ -68,19 +70,19 @@ total_price_by_prod=pd.DataFrame({'products':products,'sales_price':sales_price_
 total_price_by_prod=total_price_by_prod.sort_values(by=['sales_price'],ascending=False)
 #print(products)
 
-print("-------------------------")
+print("--------------------------------------")
 print(f"SALES REPORT!")
-print("-------------------------")
+print("--------------------------------------")
 print(f"MONTH: {month} {year}")
 print(f"TOTAL SALES: {to_usd(total_sales)}")
-print("-------------------------")
+print("--------------------------------------")
 print("TOP SELLING PRODUCTS:")
-print("-----------------------")
+print("--------------------------------------")
 
 for i in range(7):
 	print(str(i+1)+') '+str(total_price_by_prod.iloc[i][0])+' ' "(${0:,.2f})".format(total_price_by_prod.iloc[i][1])
     )
-print("-----------------------")
+print("--------------------------------------")
 print("VISUALIZING THE DATA...")
 
 #https://python-graph-gallery.com/2-horizontal-barplot/
